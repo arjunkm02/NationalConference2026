@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/tabassum/Desktop/NC25/Gallery.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Shortcut icon" href="file:///C:/Users/tabassum/Desktop/NC25/img/logo-left.png">
+    <title>BIET-NCAIET 25-Gallery</title>
+  <!-- Bootstrap CSS -->
+  <link href="./gallery1-img_files/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="./gallery1-img_files/swiper-bundle.min.css">
+      <link rel="stylesheet" href="./gallery1-img_files/bootstrap-icons.css">
+    <style>
+        /* Navbar */
+        nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #003366, #005599);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a.logo-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffd700;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 51, 102, 0.95);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+/*gallery images slide css*/
+    .gallery-container {
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      min-height: 100vh;
+      padding: 20px;
+      background: linear-gradient(to bottom, #fff 0%, #e0f2f1 100%);
+
+      /*background-color:black;*/
+    }
+
+    .swiper {
+      width:100%;
+      max-width: 960px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: 400px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      border-radius: 10px;
+      backdrop-filter: blur(3px);
+    }
+
+    @media (max-width: 768px) {
+      .swiper-slide {
+        width: 250px;
+        height: 350px;
+      }
+
+      .slide-text h5 {
+        font-size: 1rem;
+      }
+
+      .slide-text small {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .swiper-slide {
+        width: 200px;
+        height: 300px;
+      }
+    }
+
+    /*vedio*/
+    .container {
+      max-width: 800px;
+      width: 90%;
+      background: linear-gradient(135deg, #6c5ce7, #00b894);
+      padding: 2rem;
+      border-radius: 0 0 0 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container h2 {
+      color: white;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .video-wrapper video,
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Optional blob shape using clip-path */
+    @media (min-width: 768px) {
+      .container {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 80% 100%, 20% 100%, 0 85%);
+      }
+    }
+
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: #ccc;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-column {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-column ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .logo-left, .logo-right {
+        position: static;
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+      }
+
+      .center-content {
+        margin-top: 20px;
+      }
+
+      .logo-left img, .logo-right img {
+        width: 60px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-column {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <a href="file:///C:/Users/tabassum/Desktop/NC25/index.html" class="logo-title"><i class="bi bi-house-fill"></i>BIET</a>
+    <div class="hamburger" onclick="toggleMenu()" tabindex="0" aria-label="Toggle menu" role="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="file:///C:/Users/tabassum/Desktop/NC25/About.html">About</a>
+      <a href="file:///C:/Users/tabassum/Desktop/NC25/callforpapers.html">Call for papers</a>
+      <a href="file:///C:/Users/tabassum/Desktop/NC25/committies.html">Committees</a>
+      <a href="file:///C:/Users/tabassum/Desktop/NC25/Gallery.html">Gallery</a>
+      <a href="file:///C:/Users/tabassum/Desktop/NC25/Contact.html">Contact</a>
+      
+    </div>
+  </nav>
+
+<!--content section-->
+<div class="gallery-container">
+  <div class="swiper mySwiper swiper-coverflow swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress">
+    <div class="swiper-wrapper" id="swiper-wrapper-bb6639df101e6c11f" aria-live="off" style="cursor: grab; transition-duration: 0ms; transform: translate3d(-270px, 0px, 0px);">
+
+      <!-- Slide 1 -->
+      
+
+      <!-- Slide 2 -->
+      
+
+
+
+
+
+
+
+
+
+
+      <!-- Slide 2 -->
+      
+      <!-- Slide 2 -->
+      
+      <!-- Slide 2 -->
+      
+      <!-- Slide 2 -->
+      
+      <!-- Slide 3 -->
+      
+
+      <!-- Slide 4 -->
+      
+
+    <div class="swiper-slide swiper-slide-visible" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic2.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(100deg) scale(1); z-index: -1;" role="group" aria-label="5 / 8" data-swiper-slide-index="4">
+        <div class="slide-text">
+          <h5>Mountain Retreat</h5>
+          <small>Feel the chill</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-visible swiper-slide-prev" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic2.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -150px) rotateX(0deg) rotateY(50deg) scale(1); z-index: 0;" role="group" aria-label="6 / 8" data-swiper-slide-index="5">
+        <div class="slide-text">
+          <h5>Mountain Retreat</h5>
+          <small>Feel the chill</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-visible swiper-slide-active" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic3.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;" role="group" aria-label="7 / 8" data-swiper-slide-index="6">
+        <div class="slide-text">
+          <h5>Green Escape</h5>
+          <small>Breathe nature</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-visible swiper-slide-next" style="background-image: url(&quot;https://source.unsplash.com/800x600/?desert,landscape&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -150px) rotateX(0deg) rotateY(-50deg) scale(1); z-index: 0;" role="group" aria-label="8 / 8" data-swiper-slide-index="7">
+        <div class="slide-text">
+          <h5>Desert Mirage</h5>
+          <small>Burning beauty</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 1; transition-duration: 0ms;"></div></div><div class="swiper-slide swiper-slide-visible" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic1.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(-100deg) scale(1); z-index: -1;" role="group" aria-label="1 / 8" data-swiper-slide-index="0">
+        <div class="slide-text">
+          <h5>MIMISA ROCKS – AUSTRALIA</h5>
+          <small>A piece of heaven</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 2; transition-duration: 0ms;"></div></div><div class="swiper-slide" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic2.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -450px) rotateX(0deg) rotateY(-150deg) scale(1); z-index: -2;" role="group" aria-label="2 / 8" data-swiper-slide-index="1">
+        <div class="slide-text">
+          <h5>Mountain Retreat</h5>
+          <small>Feel the chill</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 3; transition-duration: 0ms;"></div></div><div class="swiper-slide" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic2.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -600px) rotateX(0deg) rotateY(-200deg) scale(1); z-index: -3;" role="group" aria-label="3 / 8" data-swiper-slide-index="2">
+        <div class="slide-text">
+          <h5>Mountain Retreat</h5>
+          <small>Feel the chill</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 4; transition-duration: 0ms;"></div></div><div class="swiper-slide" style="background-image: url(&quot;https://nationalconferencebietdvgmcanc2k24.netlify.app/images/pic2.jpg&quot;); transition-duration: 0ms; transform: translate3d(0px, 0px, -750px) rotateX(0deg) rotateY(-250deg) scale(1); z-index: -4;" role="group" aria-label="4 / 8" data-swiper-slide-index="3">
+        <div class="slide-text">
+          <h5>Mountain Retreat</h5>
+          <small>Feel the chill</small>
+        </div>
+      <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 5; transition-duration: 0ms;"></div></div></div>
+
+    <!-- Navigation Buttons -->
+    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-bb6639df101e6c11f"></div>
+    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-bb6639df101e6c11f"></div>
+  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+</div>
+
+<div class="container">
+    <h2>Watch Our Stylish Video</h2>
+    <div class="video-wrapper">
+      <!--<video controls>
+        <source src="https://youtu.be/Fc2rhra43eU?feature=shared">
+        Your browser does not support the video tag.
+      </video>-->
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-column">
+      <h3 style="color:rgb(226 111 178)">NCAIET 25</h3>
+      <ul>
+        <li>25<sup>th</sup>-26<sup>th</sup> July 2025</li>
+        <li>Bapuji Institute of Engineering and Technology Davanagere - 577004.</li>
+        
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 style="color:rgb(226 111 178)">Quick links</h3>
+      <ul>
+        <li><a href="file:///C:/Users/tabassum/Desktop/NC25/About.html">About</a></li>
+        <li><a href="file:///C:/Users/tabassum/Desktop/NC25/callforpapers.html">Call for papers</a></li>
+        <li><a href="file:///C:/Users/tabassum/Desktop/NC25/committies.html">Committees</a></li>
+        <li><a href="file:///C:/Users/tabassum/Desktop/NC25/Gallery.html">Gallery</a></li>
+        <li><a href="file:///C:/Users/tabassum/Desktop/NC25/Contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 style="color:rgb(226 111 178)">Sponsers</h3>
+      <ul>
+        <li>
+          <img src="./gallery1-img_files/logo-mca-spons1.png" height="50px" width="75px">
+        <img src="./gallery1-img_files/logo-sponcer2.jpg" height="50px" width="75px">
+      </li>
+         <li>
+          <img src="./gallery1-img_files/logo3-spons.png" height="50px" width="75px">
+        <img src="./gallery1-img_files/logo4-spons.png" height="50px" width="75px">
+      </li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 style="color:rgb(226 111 178)">Venue</h3>
+      <ul>
+        <li>Lord Basaveshwara Seminar Hall( Placement Seminar Hall), 4th Floor, 
+Mechanical Block,  
+BIET, Davanagere</li>
+        <li><a href="https://www.google.com/maps/place/BIET,+Davanagere,+Karnataka/@14.443003,75.90158,16z/data=!4m6!3m5!1s0x3bba2561b45cd815:0x4736841a4844a2a0!8m2!3d14.4435223!4d75.9020454!16s%2Fg%2F1jkylv31q?hl=en&amp;entry=ttu">
+          <i class="bi bi-geo-alt-fill" style="background-color:red"></i>location</a></li>
+        
+      </ul>
+    </div>
+  </footer>
+<!-- Swiper JS -->
+<script src="./gallery1-img_files/swiper-bundle.min.js.download"></script>
+
+   <!-- JS for Hamburger Menu -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    document.querySelector('.hamburger').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        toggleMenu();
+      }
+    });
+
+    const swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 150,
+      modifier: 1,
+      slideShadows: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+    const swiperEl = document.querySelector(".mySwiper");
+  swiperEl.addEventListener("mouseenter", () => swiper.autoplay.stop());
+  swiperEl.addEventListener("mouseleave", () => swiper.autoplay.start());
+  </script>
+
+
+</body></html>

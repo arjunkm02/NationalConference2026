@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NCAIET-2026 — Home</title>
+  <link rel="shortcut icon" href="assets/logo-left.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    :root {
+      --navy: #050e1f;
+      --deep: #091630;
+      --mid: #0d2145;
+      --accent: #c8a96e;
+      --accent2: #5b9bd5;
+      --light: #e8edf5;
+      --muted: #8898b0;
+      --white: #ffffff;
+      --radius: 4px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--light);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(5, 14, 31, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    }
+
+    .biet-logo {
+      height: 45px;
+      width: 45px;
+    }
+
+
+    .logo-title {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #e8c98a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--navy);
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      font-family: 'DM Mono', monospace;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(200, 169, 110, 0.1);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: rgba(200, 169, 110, 0.08);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--light);
+      border-radius: 2px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/background-img4.png') no-repeat center center / cover;
+      z-index: 0;
+    }
+
+    /* Multi-layer overlay: dark navy tint + gradient */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(5, 14, 31, 0.65) 0%, rgba(5, 14, 31, 0.75) 60%, rgba(5, 14, 31, 0.95) 100%),
+        linear-gradient(135deg, rgba(9, 22, 48, 0.5) 0%, rgba(13, 33, 69, 0.3) 100%);
+    }
+
+    /* Radial glow accents */
+    .hero-glow-1 {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91, 155, 213, 0.07) 0%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -80px;
+      left: 5%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 169, 110, 0.06) 0%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ── Institution strip ── */
+    .inst-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .inst-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      background: rgba(13, 33, 69, 0.7);
+      border: 1px solid rgba(200, 169, 110, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .inst-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .inst-info {
+      text-align: center;
+    }
+
+    .inst-info .inst-assoc {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .inst-info .inst-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .inst-info .inst-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* ── Dept badge ── */
+    .dept-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(200, 169, 110, 0.1);
+      border: 1px solid rgba(200, 169, 110, 0.25);
+      border-radius: 100px;
+      padding: 8px 20px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .dept-badge .mca-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .dept-badge span {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── Conference badge (animated) ── */
+    .conf-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200, 169, 110, 0.08);
+      border: 1px solid rgba(200, 169, 110, 0.2);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .conf-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(1.4);
+      }
+    }
+
+    /* ── AVISHKAR heading ── */
+    .avishkar-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      animation: fadeUp 0.7s 0.2s ease both, glimpseGlow 3s 1s ease-in-out infinite;
+      margin-bottom: 8px;
+    }
+
+    .avishkar-heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    @keyframes glimpseGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 0px transparent;
+      }
+
+      50% {
+        text-shadow: 0 0 40px rgba(200, 169, 110, 0.25);
+      }
+    }
+
+    .conf-full-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 300;
+      color: var(--light);
+      opacity: 0.85;
+      margin-bottom: 6px;
+      animation: fadeUp 0.7s 0.28s ease both;
+    }
+
+    .conf-acronym {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      color: var(--accent2);
+      text-transform: uppercase;
+      animation: fadeUp 0.7s 0.32s ease both;
+      margin-bottom: 28px;
+    }
+
+    /* ── Date chip ── */
+    .date-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(91, 155, 213, 0.1);
+      border: 1px solid rgba(91, 155, 213, 0.25);
+      border-radius: 100px;
+      padding: 10px 22px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.7s 0.38s ease both;
+    }
+
+    .date-chip i {
+      color: var(--accent2);
+      font-size: 15px;
+    }
+
+    .date-chip span {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── CTA Buttons ── */
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      animation: fadeUp 0.7s 0.44s ease both;
+    }
+
+    .btn-primary-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--accent), #e8c98a);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(200, 169, 110, 0.25);
+    }
+
+    .btn-primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(200, 169, 110, 0.35);
+    }
+
+    .btn-outline-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--light);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-outline-cta:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(200, 169, 110, 0.3);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Stat bar below hero ── */
+    .stat-bar {
+      background: rgba(9, 22, 48, 0.9);
+      border-top: 1px solid rgba(200, 169, 110, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .stat-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      padding: 28px 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #030a17;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 60px 48px 32px;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1.2fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer-brand .brand-conf {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 240px;
+      font-weight: 300;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .footer-col ul li a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--white);
+    }
+
+    .sponsor-logos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .sponsor-slot {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 4px;
+    }
+
+    .sponsor-slot img {
+      max-width: 100%;
+      max-height: 40px;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: #4a5a72;
+    }
+
+    .location-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #4a5a72;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .location-link:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 24px;
+      }
+
+      .hero-inner {
+        padding: 60px 24px;
+      }
+
+      .inst-strip {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .stat-bar-inner {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 24px;
+      }
+
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        padding: 0 0 40px;
+      }
+
+      footer {
+        padding: 48px 24px 28px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(5, 14, 31, 0.98);
+        border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+        padding: 16px 24px;
+        gap: 4px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-bar-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .inst-logo {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <a href="index.html" class="logo-title">
+      <img src="./assets/logo-left.png" alt="BIET Logo" class="biet-logo">
+      <div>
+        <div class="logo-text">BIET</div>
+        <div class="logo-sub">Davanagere</div>
+      </div>
+    </a>
+    <div class="hamburger" onclick="toggleMenu()" tabindex="0" aria-label="Toggle menu" role="button">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="About.html">About</a>
+      <a href="callforpapers.html">Call for Papers</a>
+      <a href="committies.html">Committees</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-inner">
+
+      <!-- Institution logos + info -->
+      <div class="inst-strip">
+        <div class="inst-logo">
+          <img src="assets/logo-left.png" alt="BIET Logo">
+        </div>
+        <div class="inst-info">
+          <div class="inst-assoc">Bapuji Educational Association (Regd.)</div>
+          <div class="inst-name">Bapuji Institute of Engineering &amp; Technology<br>Davanagere – 577004</div>
+          <div class="inst-sub">An Autonomous Institute Affiliated to Visvesvaraya Technological University,
+            Belagavi<br>Approved by AICTE, New Delhi &nbsp;·&nbsp; Accredited by NAAC with 'A' Grade</div>
+        </div>
+        <div class="inst-logo">
+          <img src="assets/logo-right.png" alt="VTU Logo">
+        </div>
+      </div>
+
+      <!-- Dept badge -->
+      <div class="dept-badge">
+        <img class="mca-logo" src="assets/mca-logo.png" alt="MCA">
+        <span>Department of Master of Computer Applications</span>
+      </div>
+
+      <!-- Live badge -->
+      <div class="conf-badge">NCRTICCS-2026 &nbsp;—&nbsp; National Conference</div>
+
+      <!-- Main heading -->
+      <h1 class="avishkar-heading">AVISHKAR <em>3.0</em></h1>
+
+      <p class="conf-full-name">National Conference on Recent Trends in Intelligent Computing &amp; Cyber Security</p>
+      <p class="conf-acronym">NCRTICCS &nbsp;·&nbsp; 2026</p>
+
+      <!-- Date -->
+      <div class="date-chip">
+        <i class="bi bi-calendar3"></i>
+        <span>24<sup>th</sup> – 25<sup>th</sup> April 2026</span>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="cta-row">
+        <a href="https://forms.gle/iHxckxf5bj3bVM4D9" class="btn-primary-cta">
+          <i class="bi bi-pencil-square"></i> Register Now
+        </a>
+        <a href="RegisterGuide.html" class="btn-outline-cta">
+          <i class="bi bi-file-text"></i> Guidelines
+        </a>
+        <a href="assets/NCAIET25-broucher.pdf" class="btn-outline-cta">
+          <i class="bi bi-download"></i> Brochure
+        </a>
+        <a href="assets/Template-NCAIET25.pdf" class="btn-outline-cta">
+          <i class="bi bi-file-earmark-code"></i> Paper Template
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ STAT BAR ═══ -->
+  <div class="stat-bar">
+    <div class="stat-bar-inner">
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Conference Days</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24–25</div>
+        <div class="stat-label">April 2026</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Focus Area</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">BIET</div>
+        <div class="stat-label">Davanagere</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">NCRTICCS-2026</div>
+        <div class="brand-conf">AVISHKAR 3.0</div>
+        <p>Advancing research and innovation in Intelligent Computing and Cyber Security. Organised by Bapuji Institute
+          of Engineering and Technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="About.html">About</a></li>
+          <li><a href="callforpapers.html">Call for Papers</a></li>
+          <li><a href="committies.html">Committees</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sponsors</h4>
+        <div class="sponsor-logos">
+          <div class="sponsor-slot"><img src="assets/logo-mca-spons1.png" alt="Sponsor 1"></div>
+          <div class="sponsor-slot"><img src="assets/logo-sponcer2.jpg" alt="Sponsor 2"></div>
+          <div class="sponsor-slot"><img src="assets/logo3-spons.png" alt="Sponsor 3"></div>
+          <div class="sponsor-slot"><img src="assets/logof.png" alt="Sponsor 4"></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Venue</h4>
+        <ul>
+          <li>Lord Basaveshwara Seminar Hall<br>(Placement Seminar Hall),<br>4th Floor, Mechanical Block</li>
+          <li>BIET, Davanagere – 577004<br>Karnataka, India</li>
+          <li>
+            <a href="https://www.google.com/maps/place/BIET,+Davanagere,+Karnataka/@14.443003,75.90158,16z"
+              class="location-link" target="_blank">
+              <i class="bi bi-geo-alt-fill" style="color:#e04040"></i> View on Google Maps
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 NCRTICCS &mdash; Bapuji Institute of Engineering &amp; Technology, Davanagere.</p>
+      <a href="https://www.google.com/maps/place/BIET,+Davanagere,+Karnataka/@14.443003,75.90158,16z" target="_blank"
+        class="location-link">
+        <i class="bi bi-geo-alt-fill" style="color:#e04040"></i> BIET, Davanagere, Karnataka 577004
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+    document.querySelector('.hamburger').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') toggleMenu();
+    });
+  </script>
+</body>
+
+</html>
