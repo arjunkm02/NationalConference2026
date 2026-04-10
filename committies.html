@@ -772,6 +772,71 @@
     .hero-inner>*:nth-child(3) {
       animation-delay: 0.25s;
     }
+
+    /* ─── STUDENT COORDINATORS ─── */
+.student-coord-box {
+  background: rgba(13, 33, 69, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.student-coord-box:hover {
+  border-color: rgba(200, 169, 110, 0.35);
+  background: rgba(13, 33, 69, 0.75);
+  transform: translateY(-3px);
+}
+
+.student-coord-text {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 22px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 169, 110, 0.12);
+  border: 1px solid rgba(200, 169, 110, 0.35);
+  color: var(--accent);
+  padding: 10px 20px;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.download-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  color: var(--white);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .student-coord-box {
+    padding: 24px 18px;
+  }
+
+  .student-coord-text {
+    font-size: 13px;
+  }
+
+  .download-btn {
+    font-size: 11px;
+    padding: 8px 16px;
+  }
+}
   </style>
 </head>
 
@@ -958,6 +1023,24 @@
         <div class="coord-minimal">Ms. Anusha P.M.</div>
         <div class="coord-minimal">Ms. Renuka B.N.</div>
         <div class="coord-minimal">Mr. M.P. Nataraj</div>
+      </div>
+    </div>
+
+    <!-- ── STUDENT COORDINATORS ── -->
+    <div class="section-block">
+      <p class="section-eyebrow">Student Team</p>
+      <h2 class="section-heading">Student Coordinators</h2>
+      <div class="divider"></div>
+    
+      <div class="student-coord-box">
+        <p class="student-coord-text">
+          Our student coordinators actively support the organization and execution of NCRTICCS-2026.
+          For detailed contact information, download the complete list below.
+        </p>
+    
+        <a href="assets/student-coordinators.pdf" download class="download-btn">
+          <i class="bi bi-download"></i> Download Contact List
+        </a>
       </div>
     </div>
 
